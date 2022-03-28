@@ -1,0 +1,23 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "plugin:@shopify/esnext",
+    "plugin:@shopify/typescript",
+    "plugin:@shopify/typescript-type-checking",
+    "plugin:@shopify/react"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "@shopify/jsx-no-hardcoded-content": 0
+  },
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "extraFileExtensions": [
+      ".scss"
+    ]
+  }
+}
