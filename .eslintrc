@@ -11,8 +11,10 @@
     "plugin:@shopify/react"
   ],
   "rules": {
+    "comma-dangle": 0,
     "react/react-in-jsx-scope": 0,
-    "@shopify/jsx-no-hardcoded-content": 0
+    "@shopify/jsx-no-hardcoded-content": 0,
+    "@shopify/strict-component-boundaries": 0
   },
   "parserOptions": {
     "project": "tsconfig.json",
