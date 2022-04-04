@@ -1,8 +1,7 @@
 import {FC} from 'react';
 import {Outlet} from 'react-router-dom';
 
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
+import {Navbar, Footer} from '../index';
 
 const MainLayout: FC = () => {
   return (

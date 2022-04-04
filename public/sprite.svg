@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs/><symbol id="index"/><symbol id="search" viewBox="0 0 24 24">
+    <circle cx="10" cy="10" r="9" stroke-width="2"/>
+    <ellipse cx="6.85977" cy="6.97476" rx="1.09669" ry="1.64504" transform="rotate(36.4708 6.85977 6.97476)"/>
+    <ellipse cx="17.7392" cy="19.2927" rx="4" ry="1" transform="rotate(38.9589 17.7392 19.2927)"/>
+</symbol><symbol id="tg" viewBox="0 0 24 24">
+    <path d="M0 11L6 14L19.5 6L9 15V20.5L12.5 17.5L18.5 22H19.5L23.5 2.5L0 11Z"/>
+</symbol><symbol id="theme" viewBox="0 0 24 24">
+    <path d="M11.3807 1.06204C11.2777 2.32108 11.2389 3.91075 11.3728 5.51068C11.5503 7.63107 12.0459 9.97929 13.2868 11.5331C14.6229 13.2062 16.8947 13.6712 18.8844 13.7089C20.3116 13.736 21.7495 13.5471 22.9278 13.2993C22.3127 18.7931 17.845 23 12.5 23C6.74069 23 2 18.1157 2 12C2 6.28556 6.13905 1.64619 11.3807 1.06204Z"/>
+</symbol><symbol id="vk" viewBox="0 0 36 36">
+    <path d="M9 10C10.5369 13.5754 10.9873 15.4892 14.5 19.5H15V10H20V18.5H22C23.7668 15.6686 24.7547 13.9831 26.5 10H30.5V12.5L27 18.5V20L31.5 24.5V27H27.5L22.5 22H20V26.5H14.5C8.83308 22.4329 6.54021 19.1621 4 11.5V10H9Z"/>
+</symbol></svg>

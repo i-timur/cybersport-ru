@@ -1,0 +1,157 @@
+@import "/src/assets/styles/variables";
+
+.navbar {
+  width: 100%;
+
+  &__container {
+    display: flex;
+    height: 72px;
+  }
+
+  &__logo {
+    height: 100%;
+    flex: 0 1 20%;
+    padding: 0 0 0 10px;
+  }
+
+  &__right {
+    flex: 1;
+  }
+}
+
+.logo-navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &__image {
+  }
+
+  &__background-angle {
+    position: absolute;
+    right: -15px;
+    height: 100%;
+    width: 30px;
+    transform: skewX(-20deg);
+  }
+}
+
+.right-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__navigation {
+    height: 100%;
+    margin: 0 0 0 35px;
+  }
+
+  &__nav-list {
+    height: 100%;
+    display: flex;
+    column-gap: 28px;
+  }
+
+  &__nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: calc(19 / 16 * 100%);
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+
+  &__nav-link {
+    color: inherit;
+
+    &:hover {
+      color: #FFC7AD;
+    }
+  }
+
+  &__contacts {
+    padding: 0 20px 0 0;
+    display: flex;
+    height: 100%;
+  }
+
+  &__contacts-list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+  }
+
+  &__contact-link {
+    height: 100%;
+  }
+
+  &__contacts-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    svg {
+      &:hover {
+
+        path {
+          fill: #FFC7AD;
+        }
+
+        circle {
+          stroke: #FFC7AD;
+        }
+
+        ellipse {
+          fill: #FFC7AD;
+        }
+      }
+    }
+  }
+
+  &__contacts-theme {
+    svg {
+      &:hover {
+        path {
+          fill: none;
+          stroke: #FFC7AD;
+        }
+      }
+    }
+  }
+
+  &__divider {
+    height: 60%;
+    width: 1px;
+    margin: auto 17px;
+    background-color: #F08B58;
+    transform: skewX(-20deg);
+  }
+
+  &__login-btn {
+    margin: 0 0 0 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      padding: 8px 16px;
+      border: 2px solid #FFFFFF;
+      transform: skew(-20deg);
+      cursor: pointer;
+      font-weight: 600;
+      line-height: calc(17 / 14 * 100%);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+
+      &:hover {
+        color: $primary-color;
+        background-color: #FFFFFF;
+      }
+    }
+  }
+}

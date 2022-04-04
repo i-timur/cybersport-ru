@@ -1,10 +1,8 @@
 import {FC} from 'react';
 import {Route, Routes} from 'react-router-dom';
 
-import MainLayout from './components/MainLayout/MainLayout';
-import Home from './pages/Home/Home';
-import Articles from './pages/Articles/Articles';
-import Videos from './pages/Videos/Videos';
+import {Articles, Home, Videos} from './pages';
+import {MainLayout} from './components';
 
 const App: FC = () => {
   return (
