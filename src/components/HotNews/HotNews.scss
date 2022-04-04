@@ -1,0 +1,35 @@
+.hot-news {
+  &__container {
+    width: 100%;
+    padding: 25px 12px;
+  }
+
+  &__previews {
+  }
+}
+
+.previews-hot-news {
+  height: 960px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr 2fr;
+  grid-template-rows: 2fr 2fr 3fr;
+
+  &__preview1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  &__preview2 {}
+
+  &__preview3 {}
+
+  &__preview4 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+
+  &__preview5 {}
+}
