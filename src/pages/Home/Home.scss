@@ -3,3 +3,45 @@
     width: 100%;
   }
 }
+
+.main-home {
+  width: 100%;
+  background-color: #F4F4F4;
+
+  &__container {
+    padding: 15px 0;
+    display: flex;
+    column-gap: 23px;
+  }
+
+  &__left {
+    flex: 0 1 25%;
+  }
+
+  &__right {
+    flex: 0 1 75%;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 32px;
+    margin: 0 -12px;
+  }
+
+  &__card {
+    flex: 0 1 50%;
+  }
+
+  &__btn {
+    margin: 31px 0 0 0;
+  }
+}
+
+.card-main-home {
+  padding: 0 12px;
+
+  &__container {
+
+  }
+}

@@ -1,0 +1,31 @@
+@import "/src/styles/variables";
+
+.admin-navbar {
+  background-color: $secondary-color;
+
+  &__container {
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 21px;
+    color: #FFFFFF;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

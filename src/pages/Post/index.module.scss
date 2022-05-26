@@ -1,0 +1,110 @@
+@import "/src/styles/mixins";
+
+.post {
+  padding: 20px 0 0 0;
+  background: var(--color-light-gray);
+
+  &Container {
+    background: white;
+  }
+
+  &Main {
+    display: flex;
+    border-bottom: 1px solid var(--color-light-gray);
+  }
+
+  &Left {
+    flex: 0 1 420px;
+  }
+
+  &Right {
+    padding: 30px 60px;
+  }
+
+  &Comments {
+    margin: 50px 0 0 0;
+  }
+}
+
+.left {
+
+  &Container {
+    max-width: 320px;
+  }
+
+  &Header {
+    padding: 20px 10px;
+    border-bottom: 1px solid var(--color-light-gray);
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  &Posts {
+    margin: 5px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+
+  &Post {
+    padding: 5px 10px;
+  }
+}
+
+.right {
+
+  &Container {
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  &Game {
+    @include link;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &Title {
+    margin: 15px 0 0 0;
+    font-size: 32px;
+    line-height: 44px;
+  }
+
+  &Date {
+    margin: 20px 0 0 0;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+    color: var(--color-gray);
+  }
+
+  &Text {
+    margin: 20px 0 0 0;
+    font-size: 17px;
+    line-height: 19px;
+    font-weight: 400;
+  }
+}
+
+.comments {
+
+  &Container {
+    @media (min-width: 992px) {
+      width: 66.666%;
+      margin: 0 auto;
+    }
+  }
+
+  &Title {
+    font-size: 21px;
+    line-height: 36px;
+  }
+
+  &Comments {
+    margin: 42px 0 0 0;
+  }
+
+  &Comment {
+
+  }
+}

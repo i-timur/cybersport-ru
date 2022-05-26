@@ -4,3 +4,8 @@ export {default as elec} from './elec.png';
 export {default as ww} from './ww.png';
 export {default as fish} from './fish.png';
 export {default as vert} from './vert.png';
+export {default as Other} from './common.svg';
+export {default as Dota} from './dota.svg';
+export {default as CardImage} from './card-image.jpg';
+export {default as Common} from './common.svg';
+export {default as Dota2} from './dota.svg';

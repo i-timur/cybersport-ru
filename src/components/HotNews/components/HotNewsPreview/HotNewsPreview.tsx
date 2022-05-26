@@ -1,4 +1,5 @@
 import {FC, useState} from 'react';
+import {Link} from 'react-router-dom';
 
 import './HotNewsPreview.scss';
 import {Badge} from '../../../index';
@@ -23,9 +24,14 @@ const HotNewsPreview: FC<Props> = ({title, category, commentsCount, image}) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <div className="hot-news-preview__image">
-          <img src={image} alt="preview" />
-        </div>
+        <Link
+          to="/admin"
+          className="hot-news-preview__link"
+        >
+          <div className="hot-news-preview__image">
+            <img src={image} alt="preview" />
+          </div>
+        </Link>
         <div className="hot-news-preview__content">
           <div className="hot-news-preview__badge">
             <Badge to="#">

@@ -1,0 +1,26 @@
+@import "/src/styles/variables";
+
+.inputLabel {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 21px;
+  color: $secondary-color;
+
+  &:not(:first-child) {
+    margin: 10px 0 0 0;
+  }
+
+  &__formControl {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid $secondary-color;
+    outline: 0;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 17px;
+    color: $secondary-color;
+  }
+}

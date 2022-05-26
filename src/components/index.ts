@@ -1,6 +1,17 @@
 export {default as MainLayout} from './MainLayout/MainLayout';
 export {default as HotNews} from './HotNews/HotNews';
-export {default as SideNews} from './SideNews/SideNews';
 export {default as MainNews} from './MainNews/MainNews';
 export {default as Badge} from './Badge/Badge';
 export {default as Icon} from './Icon/Icon';
+export {MoreBtn} from './ui';
+export {PrivateRoute} from './PrivateRoute/index';
+export {Navigate} from './Navigate';
+export {AdminLayout} from './admin';
+export {CreatePost} from './admin';
+export {Dashboard} from './admin';
+export {Login} from './admin';
+export {Logout} from './admin';
+export {Posts} from './admin';
+export {NewsItem} from './MainNews/components/index';
+export {Editor} from './Editor';
+export {Comment} from './Comment';

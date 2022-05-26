@@ -1,0 +1,45 @@
+.posts {
+  margin: 40px 0 0 0;
+  height: 100%;
+  background-color: #FFFFFF;
+
+  &__container {
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  &__item {
+
+  }
+}
+
+.post {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: var(--color-secondary);
+
+  &:hover {
+    background-color: var(--color-primary);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+  }
+
+  &__left {
+    flex: 1 1 auto;
+  }
+
+  &__right {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+}

@@ -1,4 +1,4 @@
-@import "/src/assets/styles/variables";
+@import "/src/styles/variables";
 
 .badge {
   display: inline-flex;
@@ -15,6 +15,7 @@
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    background: $primary-color;
+    color: #FFFFFF !important;
+    background: $primary-color !important;
   }
 }

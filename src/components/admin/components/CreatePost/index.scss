@@ -1,0 +1,48 @@
+.create-post {
+  &__title {
+    margin: 40px 0 0 0;
+    color: var(--color-secondary);
+    text-align: center;
+  }
+
+  &__input {
+    margin: 20px auto 0;
+    width: 500px;
+  }
+
+  &__subtitle {
+    width: 500px;
+    margin: 20px auto 0;
+  }
+
+  &__game {
+    width: 500px;
+    margin: 20px auto 0;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__select {
+    border: 1px solid var(--color-secondary);
+    font-size: 15px;
+    line-height: 17px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__editor {
+    min-height: 400px;
+    margin: 5px auto 0;
+    padding: 10px;
+    width: 500px;
+    border: 1px solid var(--color-secondary);
+  }
+
+  &__btn {
+    margin: 0 auto;
+    width: 160px;
+  }
+}

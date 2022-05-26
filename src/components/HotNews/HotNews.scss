@@ -1,7 +1,7 @@
 .hot-news {
   &__container {
     width: 100%;
-    padding: 25px 12px;
+    padding: 25px 0;
   }
 
   &__previews {
@@ -9,7 +9,7 @@
 }
 
 .previews-hot-news {
-  height: 960px;
+  min-height: 750px;
   width: 100%;
   display: grid;
   grid-template-columns: 3fr 1fr 2fr;

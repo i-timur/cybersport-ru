@@ -1,0 +1,13 @@
+.mainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &Upper {
+    flex: 1 1 auto;
+  }
+
+  &Footer {
+    flex: 0 1 auto;
+  }
+}

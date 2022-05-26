@@ -1,0 +1,58 @@
+@import "/src/styles/variables";
+
+.footer {
+  background: $secondary-color;
+
+  &__container {
+    display: flex;
+    padding: 14px 0;
+  }
+
+  &__left {
+    flex: 0 1 50%;
+    display: flex;
+  }
+
+  &__right {
+    flex: 0 1 50%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $white;
+  }
+
+  &__owner {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: $white;
+  }
+
+  &__links {
+    margin: 10px 0 0 0;
+  }
+
+  &__link {
+    font-size: 12px;
+    line-height: 15px;
+    color: $white;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__constraint {
+    dispay: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 86px;
+    padding: 6px 13px;
+    border: 1px solid #8A8A8A;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 28px;
+    color: $white;
+  }
+}

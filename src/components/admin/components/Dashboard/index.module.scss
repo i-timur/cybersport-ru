@@ -1,0 +1,34 @@
+.dashboard {
+  margin: 172px 0 0 0;
+  height: 100%;
+  background: #FFFFFF;
+
+  &__container {
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+  }
+
+  &__link {
+    width: 210px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    text-align: center;
+    background-color: var(--color-secondary);
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-primary);
+    }
+  }
+}

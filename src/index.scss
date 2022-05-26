@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+:root {
+  --color-primary: #EE773B;
+  --color-secondary: #202020;
+  --color-hover: #FFC7AD;
+  --color-gray: #8A8A8A;
+  --color-light-gray: #F4F4F4;
+}
+
 *,
 *:before,
 *:after {
@@ -26,10 +34,23 @@ body {
   font-weight: 500;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1366px;
+}
+
 .bg-primary {
   background-color: #EE773B;
 }
 
 .bg-secondary {
   background-color: #202020;
+}
+
+.ce-block__content, .ce-toolbar__content {
+  margin: 0 !important;
+}
+
+.codex-editor__redactor {
+  padding-bottom: 0 !important;
 }

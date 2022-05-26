@@ -7,8 +7,8 @@ import {Icon} from '../../../index';
 
 const Navbar: FC = () => {
   return (
-    <div className="navbar">
-      <div className="navbar__container">
+    <div className="navbar bg-primary">
+      <div className="navbar__container container">
         <Link
           to="/"
           className="navbar__logo logo-navbar bg-secondary"

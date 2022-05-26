@@ -1,0 +1,23 @@
+@import "/src/styles/variables";
+
+.more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 17px 0;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: $primary-color;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: $white;
+    background-color: $primary-color;
+  }
+}

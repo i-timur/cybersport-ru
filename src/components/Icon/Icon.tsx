@@ -3,7 +3,7 @@ import {FC, useState} from 'react';
 interface Props {
   name: string;
   size?: number | string;
-  color: string;
+  color?: string;
   hoverColor?: string;
 }
 
