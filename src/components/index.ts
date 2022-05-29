@@ -15,3 +15,7 @@ export {Posts} from './admin';
 export {NewsItem} from './MainNews/components/index';
 export {Editor} from './Editor';
 export {Comment} from './Comment';
+export {Portal} from './Portal';
+export {ModalConstructor} from './ModalConstructor';
+export {HomeCard} from './HomeCard/HomeCard';
+export {HomeCards} from './HomeCards';

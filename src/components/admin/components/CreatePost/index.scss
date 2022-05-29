@@ -1,36 +1,45 @@
 .create-post {
+  &__container {
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 21px;
+    color: var(--color-secondary);
+  }
+
   &__title {
-    margin: 40px 0 0 0;
+    margin: 40px 0 30px 0;
     color: var(--color-secondary);
     text-align: center;
   }
 
-  &__input {
-    margin: 20px auto 0;
-    width: 500px;
+  &__post-type {
+    margin: 0 0 5px 0;
+  }
+
+  &__img {
+    margin: 10px 0 0;
   }
 
   &__subtitle {
-    width: 500px;
-    margin: 20px auto 0;
+    margin: 10px 0 0 0;
   }
 
   &__game {
-    width: 500px;
-    margin: 20px auto 0;
+    width: 100%;
     display: flex;
+    margin: 5px 0 0 0;
     align-items: center;
     column-gap: 10px;
   }
 
-  &__select {
-    border: 1px solid var(--color-secondary);
-    font-size: 15px;
-    line-height: 17px;
+  &__game-dropdown {
+    flex: 1 1 auto;
+  }
 
-    &:focus {
-      outline: none;
-    }
+  &__input {
+    margin: 10px 0 0 0;
   }
 
   &__editor {

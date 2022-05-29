@@ -1,0 +1,118 @@
+@import "/src/styles/mixins";
+
+.signIn {
+  background: white;
+  width: 380px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  &__navigation {
+
+  }
+
+  &__tabs {
+    @include tabs;
+  }
+
+  &__tab {
+    @include tab;
+  }
+
+  &__close {
+    background: transparent;
+    opacity: 0.4;
+    cursor: pointer;
+  }
+
+  &__content {
+    padding: 20px;
+  }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+    margin: 0 0 16px 0;
+  }
+
+  &__img {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    margin: 0 13px 0 0;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__entry {
+    font-weight: 700;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__inputName {
+    margin: 5px 0 5px 0;
+
+  }
+
+  &__input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #d8d8d8;
+    background: #f9f9f9;
+    font-size: 16px;
+    line-height: 18px;
+
+    &:focus {
+      outline: 0;
+      background: white;
+    }
+  }
+
+  &__alert {
+    display: block;
+    margin: 5px 0 0 0;
+    color: var(--color-red);
+  }
+
+  &__signInBtn {
+    margin: 20px 0 0 0;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 20px;
+    background: var(--color-primary);
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .9;
+    }
+
+    &:disabled,
+    &[disabled] {
+      border: 1px solid #d8d8d8;
+      background: transparent;
+      color: #9d9d9d;
+    }
+  }
+}

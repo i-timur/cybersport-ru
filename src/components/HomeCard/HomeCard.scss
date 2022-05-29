@@ -1,8 +1,12 @@
 @import "/src/styles/variables";
 
 .home-card {
-  &__container {
+  height: 100%;
 
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__image {
@@ -22,6 +26,10 @@
   }
 
   &__text {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 28px 25px 30px;
     background: #FFFFFF;
   }
@@ -50,8 +58,8 @@
   &__date {
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 1.5;
     color: #8A8A8A;
   }
 
@@ -63,5 +71,9 @@
     line-height: 18px;
     text-transform: uppercase;
     color: #8A8A8A;
+
+    &_popular {
+      color: #FF6F22;
+    }
   }
 }

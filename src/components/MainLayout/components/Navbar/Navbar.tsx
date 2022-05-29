@@ -1,11 +1,20 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
+import {observer} from 'mobx-react-lite';
 
-import {logo} from '../../../../assets/images';
-import './Navbar.scss';
+import {logo, NoAvatar} from '../../../../assets/images';
 import {Icon} from '../../../index';
+import {useStores} from '../../../../hooks';
+import {ModalSignIn} from '../../../Modals';
+import {AuthService} from '../../../../services/authService';
+import './Navbar.scss';
+import {Dropdown} from '../../../Dropdown';
 
-const Navbar: FC = () => {
+const Navbar: FC = observer(() => {
+  const {modalStore: {setCurrentModal}} = useStores();
+
+  const authService = new AuthService();
+
   return (
     <div className="navbar bg-primary">
       <div className="navbar__container container">
@@ -23,9 +32,7 @@ const Navbar: FC = () => {
           <nav className="right-navbar__navigation">
             <ul className="right-navbar__nav-list">
               <li className="right-navbar__nav-item">
-                <p className="right-navbar__nav-link">
-                  Новости
-                </p>
+                <Dropdown title="Новости" ids={['0', '1', '2', '3', '4']} data={['dota', 'cs:go', 'lol', 'valorant', 'warcraft']} />
               </li>
               <li className="right-navbar__nav-item">
                 <p className="right-navbar__nav-link">
@@ -115,19 +122,26 @@ const Navbar: FC = () => {
               </Link>
             </ul>
 
-            <div className="right-navbar__login-btn">
-              <button
-                type="button"
-                className="bg-primary"
-              >
+            {authService.isAuthenticated ? (
+              <div className="right-navbar__user-img">
+                <img src={NoAvatar} alt="Ваш профиль" />
+              </div>
+            ) : (
+              <div className="right-navbar__login-btn">
+                <button
+                  type="button"
+                  className="bg-primary"
+                  onClick={() => setCurrentModal(<ModalSignIn />)}
+                >
                 <span>Войти</span>
-              </button>
-            </div>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-};
+});
 
 export default Navbar;

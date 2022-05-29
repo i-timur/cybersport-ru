@@ -1,8 +1,7 @@
-import {useContext} from 'react';
+import {MutableRefObject, useContext, useEffect} from 'react';
 
-import {StoreContext} from '../utils';
 import {AuthContext} from '../contexts/AuthProvider';
-import {AuthContextValue} from '../types';
+import {StoreContext} from '../contexts/StoreProvider';
 
 export const useStores = () => {
   const store = useContext(StoreContext);
@@ -18,4 +17,19 @@ export const useAuth = () => {
     throw new Error('Did not find auth context');
   }
   return auth;
+};
+
+export const useModalClose = (ref: MutableRefObject<HTMLElement | undefined>, handler: () => void) => {
+  useEffect(() => {
+    const reference = ref.current;
+
+    const listener = (event: Event) => {
+      if (reference === event.target) {
+        handler();
+      }
+    };
+    reference?.addEventListener('mousedown', listener);
+
+    return () => reference?.removeEventListener('mousedown', listener);
+  }, [ref, handler]);
 };

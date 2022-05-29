@@ -9,3 +9,4 @@ export {default as Dota} from './dota.svg';
 export {default as CardImage} from './card-image.jpg';
 export {default as Common} from './common.svg';
 export {default as Dota2} from './dota.svg';
+export {default as NoAvatar} from './no-avatar.png';

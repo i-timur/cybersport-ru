@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {Route, Routes} from 'react-router-dom';
 
-import {Articles, Home, Videos} from './pages';
+import {Articles, Home} from './pages';
 import {MainLayout, PrivateRoute, AdminLayout, CreatePost, Dashboard, Login, Logout, Navigate, Posts} from './components';
 import {useAuth} from './hooks';
 import {PostComponent} from './pages/Post';
@@ -13,13 +13,8 @@ const App: FC = () => {
       <Routes>
         <Route path="/*" element={<MainLayout />}>
           <Route path="" element={<Home />} />
-          <Route path="articles" element={<Articles />} />
-          <Route path="interviews" element={<Articles />} />
-          <Route path="videos" element={<Videos />} />
-          <Route path="business" element={<Articles />} />
-          <Route path="education" element={<Articles />} />
-          <Route path="gaming-clubs" element={<Articles />} />
-          <Route path=":category/news/:id" element={<PostComponent />} />
+          <Route path=":postOption" element={<Articles />} />
+          <Route path=":category/:postType/:id" element={<PostComponent />} />
         </Route>
         <Route path="/admin/*" element={<AdminLayout />}>
           <Route

@@ -1,0 +1,136 @@
+@import "/src/styles/mixins";
+
+.comment {
+  display: flex;
+  padding: 0 0 16px 0;
+  border-bottom: 1px solid #efefef;
+
+  &:hover {
+    .comment__date {
+      opacity: 1;
+    }
+
+    .comment__controls {
+      opacity: 1;
+    }
+  }
+
+  &__left {
+    min-width: 48px;
+    margin: 0 16px 0 0;
+  }
+
+  &__img {
+    overflow: hidden;
+    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__right {
+    flex: 1 1 auto;
+  }
+
+  &__contentHeader {
+    margin: 0 0 8px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__userInfo {
+    color: var(--color-gray);
+
+  }
+
+  &__userRating {
+    font-size: 12px;
+  }
+
+  &__userRang {
+    display: inline-block;
+    margin: 0 0 0 4px;
+    font-size: 12px;
+
+    svg {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  &__author {
+    margin-right: 4px;
+    white-space: nowrap;
+    line-height: 16px;
+    font-weight: 700;
+    @include link;
+  }
+
+  &__date {
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(.64,.28,.48,.99);
+    font-size: 12px;
+    color: var(--color-gray);
+  }
+
+  &__body {
+    margin: 0 0 13px 0;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__likes {
+
+  }
+
+  &__like {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    cursor: pointer;
+
+    &:not(:first-child) {
+      margin: 0 0 0 10px;
+    }
+  }
+
+  &__like_green {
+    color: var(--color-green);
+  }
+
+  &__like_red {
+    color: var(--color-red);
+  }
+
+  &__controls {
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(.64,.28,.48,.99);
+  }
+
+  &__control {
+    display: inline-block;
+    padding: 5px 10px;
+    background: transparent;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+
+    &:hover {
+      color: var(--color-secondary);
+    }
+  }
+}

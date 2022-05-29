@@ -2,38 +2,15 @@ import {FC, useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {format} from 'date-fns';
 import {ru} from 'date-fns/locale';
-import {OutputData} from '@editorjs/editorjs';
+// @ts-ignore
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
 import {http} from '../../client';
-import {IComment, Post, PostsResp} from '../../types';
-import {comparePosts} from '../../utils';
+import {Post} from '../../types';
+import {compareCommentsByDateAsc, compareCommentsByLikesDesc, comparePosts, makeArrayOf} from '../../utils';
 import {Editor, NewsItem, Comment} from '../../components';
 
 import styles from './index.module.scss';
-
-const comments: IComment[] = [
-  {
-    id: '0',
-    authorId: 'dadsadsadasdas',
-    authorName: 'Agent',
-    date: new Date().toLocaleDateString(),
-    text: 'выиграли рофлолан (тсм проиграли сами себе) и радуются.'
-  },
-  {
-    id: '1',
-    authorId: 'ds',
-    authorName: 'Robot',
-    date: new Date().toLocaleDateString(),
-    text: 'выиграли рофлолан (тсм проиграли сами себе) и радуются.'
-  },
-  {
-    id: '2',
-    authorId: 'qq',
-    authorName: 'Bear',
-    date: new Date().toLocaleDateString(),
-    text: 'выиграли рофлолан (тсм проиграли сами себе) и радуются.'
-  },
-];
 
 export const PostComponent: FC = () => {
   const {id} = useParams();
@@ -43,26 +20,27 @@ export const PostComponent: FC = () => {
   useEffect(() => {
     http.get(`posts/${id}.json`)
       .then((res: any) => {
-        setPost(res);
+        setPost({...res, comments: makeArrayOf(res.comments)});
       })
-      .catch(() => {});
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, [id]);
 
   useEffect(() => {
     if (post) {
       http.get('posts.json')
-        .then((res) => {
-          const posts: Post[] = Object.keys(res as unknown as PostsResp)
-            .map((key) => {
+        .then((res: any) => {
+          const posts: Post[] = makeArrayOf(res)
+            .map((post) => {
               return {
-                id: key,
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                ...res[key]
+                ...post,
+                comments: makeArrayOf(post.comments)
               };
             })
             .sort(comparePosts)
             .filter((el: Post) => el.game.value === post.game.value)
+            .filter((el: Post) => el.postType.value === 'news')
             .filter((el: Post) => el.id !== id);
 
           setLastNews(posts.slice(0, 5));
@@ -81,14 +59,14 @@ export const PostComponent: FC = () => {
               <h6 className={styles.leftHeader}>Новости</h6>
               <div className={styles.leftPosts}>
                 {lastNews && (
-                  lastNews.map(({id, game, date, title, commentsCount}) => (
+                  lastNews.map(({id, game, date, title, comments}) => (
                     <div className={styles.leftPost} key={id}>
                       <NewsItem
                         id={id ?? '-1'}
                         game={game}
                         title={title}
                         date={`${format(new Date(date), 'd LLLL HH:mm', {locale: ru})}`}
-                        commentsCount={commentsCount}
+                        commentsCount={comments.length}
                       />
                     </div>
                   ))
@@ -117,14 +95,56 @@ export const PostComponent: FC = () => {
         </div>
         <div className={styles.postComments}>
           <div className={styles.commentsContainer}>
-            <h4 className={styles.commentsTitle}>Комментарии</h4>
-            <div className={styles.commentsComments}>
-              {comments.map((comment) => (
-                <div className={styles.commentsComment} key={comment.authorId}>
-                  <Comment />
-                </div>
-              ))}
-            </div>
+            <Tabs defaultIndex={1}>
+              <header className={styles.comments__header}>
+                <h4 className={styles.commentsTitle}>Комментарии <sup className={styles.commentsCount}>{post?.comments.length}</sup></h4>
+                <TabList className={styles.comments__tabs}>
+                  <Tab
+                    className={styles.comments__tab}
+                    selectedClassName={styles.comments__Tab_selected}
+                  >По популярности</Tab>
+                  <Tab
+                    className={styles.comments__tab}
+                    selectedClassName={styles.comments__Tab_selected}
+                  >По времени</Tab>
+                </TabList>
+              </header>
+
+              <section className={styles.comments__messages}>
+                <TabPanel>
+                  <ul className={styles.comments__messages}>
+                    {post?.comments.sort(compareCommentsByLikesDesc).map((comment) => (
+                      <li key={comment.id} className={styles.comments__message}>
+                        <Comment
+                          authorId={comment.authorId}
+                          authorName={comment.authorName}
+                          text={comment.text}
+                          date={comment.date}
+                          likes={comment.likes}
+                          dislikes={comment.dislikes}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </TabPanel>
+                <TabPanel>
+                  <ul className={styles.comments__messages}>
+                    {post?.comments.sort(compareCommentsByDateAsc).map((comment) => (
+                      <li key={comment.id} className={styles.comments__message}>
+                        <Comment
+                          authorId={comment.authorId}
+                          authorName={comment.authorName}
+                          text={comment.text}
+                          date={comment.date}
+                          likes={comment.likes}
+                          dislikes={comment.dislikes}
+                        />
+                      </li>
+                    ))}
+                  </ul>
+                </TabPanel>
+              </section>
+            </Tabs>
           </div>
         </div>
       </div>

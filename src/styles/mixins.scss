@@ -5,3 +5,35 @@
     color: var(--color-primary);
   }
 }
+
+@mixin tab {
+  padding: 5px 10px;
+  border-color: #efefef;
+  color: #0f0f0f;
+  text-align: center;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    background-color: #fffbed;
+  }
+
+  &:hover {
+    background-color: #fffbed;
+  }
+
+  &_selected {
+    background-color: #fffbed;
+  }
+}
+
+@mixin tabs {
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #efefef;
+}

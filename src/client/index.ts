@@ -1,26 +1,28 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 
-// eslint-disable-next-line import/no-cycle
-import {AuthService} from '../services/authService';
-
 class HttpClient {
   http: AxiosInstance;
-  auth: AuthService = new AuthService();
 
   constructor() {
     this.http = axios.create();
     this.initInterceptors();
   }
 
+  initInterceptors() {
+    this.initAuthInterceptor();
+    this.initRespInterceptor();
+    this.initUrlInterceptor();
+  }
+
   initAuthInterceptor() {
     this.http.interceptors.request.use((config) => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('fb-token');
       if (token) {
         const request: AxiosRequestConfig = {
           ...config,
-          headers: {
-            ...config.headers,
-            Authorization: token
+          params: {
+            ...config.params,
+            auth: token
           }
         };
         return request;
@@ -30,23 +32,16 @@ class HttpClient {
   }
 
   initRespInterceptor() {
-    this.http.interceptors.response.use((response) => response.data);
-  }
-
-  initInterceptors() {
-    this.initAuthInterceptor();
-    this.initRespInterceptor();
-    this.initUrlInterceptor();
+    this.http.interceptors.response.use(
+      (response) => response.data,
+      (err) => Promise.reject(err.response.data)
+    );
   }
 
   initUrlInterceptor() {
     this.http.interceptors.request.use((config) => {
       return {
         ...config,
-        params: {
-          ...config.params,
-          auth: this.auth.token
-        },
         url: config.url?.startsWith('https') ||
           config.url?.startsWith('http')
             ? config.url

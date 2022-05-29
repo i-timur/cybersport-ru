@@ -1,6 +1,5 @@
 import {FC, useEffect, useRef} from 'react';
 import EditorJS, {OutputData} from '@editorjs/editorjs';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import Header from '@editorjs/header';
 

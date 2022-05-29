@@ -33,11 +33,10 @@ export class AuthService {
     user.returnSecureToken = true;
     return new Promise((resolve, reject) => {
       http.post(
-        `${process.env.REACT_APP_API_URL}accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`,
+        `${process.env.REACT_APP_API_URL}/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`,
         user
       )
         .then((resp) => {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           this.setToken(resp);
           this.state = 'done';

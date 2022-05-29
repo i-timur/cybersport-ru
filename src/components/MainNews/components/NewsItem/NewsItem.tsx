@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
-import {Dota2} from '../../../../assets/images';
 import {Icon} from '../../../index';
 import './NewsItem.scss';
 import {getCategoryImage} from '../../../../utils';
@@ -29,9 +28,19 @@ const NewsItem: FC<Props> = ({id, game, title, date, img, commentsCount}) => {
         <p className="item-main-news__time">{date}</p>
         <div className="item-main-news__title">
           {title}
-          <div className="item-main-news__comment">
-            <Icon name="comment" color="#8A8A8A" />
-            {commentsCount}
+          <div className={commentsCount > 5 ? 'item-main-news__comment item-main-news__comment_popular' : 'item-main-news__comment'}>
+            {commentsCount > 5 ? (
+              <Icon
+                name="fire"
+                color="#FF6F22"
+              />
+            ) : (
+              <Icon
+                name="comment"
+                color="#8A8A8A"
+              />
+            )}
+            &nbsp;{commentsCount || 0}
           </div>
         </div>
       </div>

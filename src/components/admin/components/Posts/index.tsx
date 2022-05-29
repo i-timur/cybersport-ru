@@ -17,7 +17,6 @@ export const Posts: FC = () => {
           .map((key) => {
             return {
               id: key,
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               ...res[key]
             };
@@ -41,7 +40,7 @@ export const Posts: FC = () => {
                 </div>
                 <div className={styles.post__right}>
                   <p>
-                    Игра: {post.game}
+                    Игра: {post.game.name}
                   </p>
                   <p>
                     Дата публикации:&nbsp;

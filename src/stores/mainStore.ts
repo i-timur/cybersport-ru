@@ -1,13 +1,10 @@
-// eslint-disable-next-line no-warning-comments
-//  TODO import/no-cycle как пофиксить?
-// eslint-disable-next-line import/no-cycle
-import {AuthStore} from './authStore';
+import {ModalStore} from './modalStore';
 
 export class MainStore {
-  authStore: AuthStore;
+  modalStore: ModalStore;
 
   constructor() {
-    this.authStore = new AuthStore(this);
+    this.modalStore = new ModalStore(this);
   }
 }
 

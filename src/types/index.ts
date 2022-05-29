@@ -1,5 +1,6 @@
 import {OutputData} from '@editorjs/editorjs';
 import {Dispatch} from 'react';
+import {Option} from '../utils';
 
 export interface User {
   email: string;
@@ -14,11 +15,13 @@ export interface FbAuthResponse {
 
 export interface Post {
   id?: string;
+  postType: Option;
+  previewLink: string;
   title: string;
   data: OutputData;
   date: Date;
   game: Category;
-  commentsCount: number;
+  comments: Message[];
 }
 
 export interface AuthContextValue {
@@ -32,13 +35,26 @@ export interface PostsResp extends Record<string, Post> {
 export interface Category {
   value: string;
   name: string;
+  img?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IComment {
+export interface Message {
   id?: string;
   authorId: string;
   authorName: string;
   text: string;
-  date: string;
+  date: Date;
+  dislikes: number;
+  likes: number;
+}
+
+export interface UserSignInForm {
+  login: string;
+  password: string;
+}
+
+export interface UserSignUpForm {
+  login: string;
+  password: string;
+  email: string;
 }

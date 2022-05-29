@@ -2,8 +2,10 @@ import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
 import {hf, elec, ww, fish, vert} from '../../assets/images';
+import {Post} from '../../types';
 
 import {HotNewsPreview} from './components/index';
+
 import './HotNews.scss';
 
 const hotNews = [
@@ -44,21 +46,27 @@ const hotNews = [
   },
 ];
 
-const HotNews: FC = () => {
+interface Props {
+  posts: Post[];
+}
+
+const HotNews: FC<Props> = ({posts}) => {
   return (
     <div className="hot-news bg-secondary">
       <div className="hot-news__container bg-secondary container">
         <div className="hot-news__previews previews-hot-news">
-          {hotNews.map((el, idx) =>
+          {posts.map((el, idx) =>
             <div
               key={el.id}
               className={`previews-hot-news__preview${idx}`}
             >
               <HotNewsPreview
+                id={el.id ?? 'not_existing_index'}
                 title={el.title}
-                category={el.category}
-                commentsCount={el.commentsCount}
-                image={el.image}
+                postType={el.postType}
+                game={el.game}
+                commentsCount={el.comments.length}
+                image={el.previewLink}
               />
             </div>)}
         </div>
