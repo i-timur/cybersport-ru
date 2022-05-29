@@ -21,8 +21,6 @@ const MainNews: FC<Props> = ({posts}) => {
   });
   const sortedPostsByDate: {[key: string]: Post[];} = {};
   for (const post of formattedPosts) {
-    // eslint-disable-next-line no-console
-    console.log('Post date: ', post.date);
     if (post.date in sortedPostsByDate) {
       sortedPostsByDate[post.date].push({...post, date: new Date(post.date)});
     } else {
