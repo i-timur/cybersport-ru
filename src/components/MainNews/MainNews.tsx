@@ -27,6 +27,8 @@ const MainNews: FC<Props> = ({posts}) => {
       sortedPostsByDate[post.date] = [{...post, date: new Date(post.date)}];
     }
   }
+  // eslint-disable-next-line no-console
+  console.log(sortedPostsByDate);
   return (
     <div className="main-news">
       <div className="main-news__container">
@@ -41,7 +43,7 @@ const MainNews: FC<Props> = ({posts}) => {
                     id={id ?? 'not_existing_index'}
                     game={game}
                     title={title}
-                    date={`${format(new Date(date), 'HH:mm')}`}
+                    date={posts.find((post) => post.id === id)?.date || new Date()}
                     commentsCount={comments.length}
                   />
                 </div>)}

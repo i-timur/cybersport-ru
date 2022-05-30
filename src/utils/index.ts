@@ -50,23 +50,28 @@ export const categoryOptions: Category[] = [
   },
   {
     name: 'WARCRAFT III',
-    value: 'warcraft-iii'
+    value: 'warcraft-iii',
+    img: Dota2
   },
   {
     name: 'PUBG',
-    value: 'pubg'
+    value: 'pubg',
+    img: Dota2
   },
   {
     name: 'FORNITE',
-    value: 'fortnite'
+    value: 'fortnite',
+    img: Dota2
   },
   {
     name: 'APEX LEGENDS',
-    value: 'apex-legends'
+    value: 'apex-legends',
+    img: Dota2
   },
   {
     name: 'VALORANT',
-    value: 'valorant'
+    value: 'valorant',
+    img: Dota2
   },
   {
     name: 'LEAGUE OF LEGENDS',

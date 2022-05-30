@@ -13,7 +13,8 @@ const App: FC = () => {
       <Routes>
         <Route path="/*" element={<MainLayout />}>
           <Route path="" element={<Home />} />
-          <Route path=":postOption" element={<Articles />} />
+          <Route path=":postType" element={<Articles />} />
+          <Route path="games/:game" element={<Articles />} />
           <Route path=":category/:postType/:id" element={<PostComponent />} />
         </Route>
         <Route path="/admin/*" element={<AdminLayout />}>

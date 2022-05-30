@@ -7,37 +7,32 @@ interface Props {
   title: string;
   ids: string[];
   data: string[];
+  icons?: string[];
+  width?: string;
 }
 
-export const Dropdown: FC<Props> = ({title, ids, data}) => {
+export const Dropdown: FC<Props> = ({title, ids, data, icons, width}) => {
   const [visible, setVisible] = useState<boolean>(false);
-
-  const onMouseEnter = (event: Event) => {
-    event.stopPropagation();
-    setVisible(true);
-  };
-
-  const onMouseLeave = (event: Event) => {
-    // eslint-disable-next-line no-console
-    console.log('Event target: ', event);
-    event.stopPropagation();
-    setVisible(false);
-  };
 
   return (
     <div
       className={styles.dropdown}
       // @ts-ignore
-      onMouseEnter={onMouseEnter}
+      onMouseEnter={() => setVisible(true)}
       // @ts-ignore
-      onMouseLeave={onMouseLeave}
+      onMouseLeave={() => setVisible(false)}
     >
-        <header className={styles.dropdown__title}>{title}</header>
+        <header
+          className={visible ? `${styles.dropdown__title} ${styles.dropdown__title_hovered}` : styles.dropdown__title}
+        >{title}</header>
         {visible && (
-          <ul className={styles.dropdown__list}>
+          <ul className={styles.dropdown__list} style={{width}}>
             {data.map((value, idx) => (
               <li key={ids[idx]} className={styles.dropdown__item}>
-                <Link to={ids[idx]} className={styles.dropdown__link}>{value}</Link>
+                <Link to={ids[idx]} className={styles.dropdown__link}>
+                  {icons && <img src={icons[idx]} alt={value} />}
+                  {value}
+                </Link>
               </li>
             ))}
           </ul>

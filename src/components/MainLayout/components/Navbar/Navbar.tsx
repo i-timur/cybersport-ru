@@ -7,8 +7,9 @@ import {Icon} from '../../../index';
 import {useStores} from '../../../../hooks';
 import {ModalSignIn} from '../../../Modals';
 import {AuthService} from '../../../../services/authService';
-import './Navbar.scss';
 import {Dropdown} from '../../../Dropdown';
+import {categoryOptions, postOptions} from '../../../../utils';
+import './Navbar.scss';
 
 const Navbar: FC = observer(() => {
   const {modalStore: {setCurrentModal}} = useStores();
@@ -32,12 +33,21 @@ const Navbar: FC = observer(() => {
           <nav className="right-navbar__navigation">
             <ul className="right-navbar__nav-list">
               <li className="right-navbar__nav-item">
-                <Dropdown title="Новости" ids={['0', '1', '2', '3', '4']} data={['dota', 'cs:go', 'lol', 'valorant', 'warcraft']} />
+                <Dropdown
+                  title="Новости"
+                  ids={postOptions.map((cat) => cat.value)}
+                  data={postOptions.map((cat) => cat.label)}
+                  width="150px"
+                />
               </li>
               <li className="right-navbar__nav-item">
-                <p className="right-navbar__nav-link">
-                  Игры
-                </p>
+                <Dropdown
+                  title="Игры"
+                  ids={categoryOptions.map((cat) => `games/${cat.value}`)}
+                  data={categoryOptions.map((cat) => cat.name)}
+                  icons={categoryOptions.map((cat) => cat.img!)}
+                  width="180px"
+                />
               </li>
               <li className="right-navbar__nav-item">
                 <p className="right-navbar__nav-link">

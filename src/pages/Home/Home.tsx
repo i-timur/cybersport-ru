@@ -1,6 +1,6 @@
 import {FC, useEffect, useState} from 'react';
 
-import {HotNews, MainNews, MoreBtn, HomeCards} from '../../components';
+import {HotNews, MainNews, HomeCards} from '../../components';
 import {Post} from '../../types';
 import {http} from '../../client';
 import {comparePosts, makeArrayOf} from '../../utils';
@@ -22,8 +22,7 @@ const Home: FC = () => {
           })
           .sort(comparePosts);
         setPosts(posts);
-      })
-      .catch(() => {});
+      });
   }, []);
 
   return (
@@ -40,11 +39,6 @@ const Home: FC = () => {
             <div className="main-home__right">
               <div className="main-home__cards">
                 {posts && <HomeCards posts={posts.filter((post) => post.postType.value !== 'news')} />}
-              </div>
-
-              <div className="main-home__btn">
-                {/* eslint-disable-next-line no-console */}
-                <MoreBtn onClick={() => console.log('More btn is clicked!')} />
               </div>
             </div>
           </div>

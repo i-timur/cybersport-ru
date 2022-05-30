@@ -5,8 +5,10 @@ import {ru} from 'date-fns/locale';
 // @ts-ignore
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
+import {useAuth} from '../../hooks';
+import {NoAvatar} from '../../assets/images';
 import {http} from '../../client';
-import {Post} from '../../types';
+import {Message, Post} from '../../types';
 import {compareCommentsByDateAsc, compareCommentsByLikesDesc, comparePosts, makeArrayOf} from '../../utils';
 import {Editor, NewsItem, Comment} from '../../components';
 
@@ -16,11 +18,37 @@ export const PostComponent: FC = () => {
   const {id} = useParams();
   const [post, setPost] = useState<Post | null>(null);
   const [lastNews, setLastNews] = useState<Post[] | null>(null);
+  const [comments, setComments] = useState<Message[] | null>(null);
+  const [commentValue, setCommentValue] = useState<string>('');
+
+  const {auth} = useAuth();
+
+  const handleClick = () => {
+    const comment: Message = {
+      authorId: 'dasdsa',
+      authorName: 'Petya',
+      text: commentValue,
+      date: new Date(),
+      likes: 0,
+      dislikes: 0
+    };
+
+    http.post(`posts/${id}/comments.json`, comment)
+      .then(() => {
+        setCommentValue('');
+        if (comments) {
+          setComments([...comments, comment]);
+        }
+      });
+  };
 
   useEffect(() => {
     http.get(`posts/${id}.json`)
       .then((res: any) => {
         setPost({...res, comments: makeArrayOf(res.comments)});
+        if (res.comments) {
+          setComments(makeArrayOf(res.comments));
+        }
       })
       .catch((err) => {
         throw new Error(err);
@@ -65,7 +93,7 @@ export const PostComponent: FC = () => {
                         id={id ?? '-1'}
                         game={game}
                         title={title}
-                        date={`${format(new Date(date), 'd LLLL HH:mm', {locale: ru})}`}
+                        date={new Date(date)}
                         commentsCount={comments.length}
                       />
                     </div>
@@ -113,7 +141,7 @@ export const PostComponent: FC = () => {
               <section className={styles.comments__messages}>
                 <TabPanel>
                   <ul className={styles.comments__messages}>
-                    {post?.comments.sort(compareCommentsByLikesDesc).map((comment) => (
+                    {comments?.sort(compareCommentsByLikesDesc).map((comment) => (
                       <li key={comment.id} className={styles.comments__message}>
                         <Comment
                           authorId={comment.authorId}
@@ -129,7 +157,7 @@ export const PostComponent: FC = () => {
                 </TabPanel>
                 <TabPanel>
                   <ul className={styles.comments__messages}>
-                    {post?.comments.sort(compareCommentsByDateAsc).map((comment) => (
+                    {comments?.sort(compareCommentsByDateAsc).map((comment) => (
                       <li key={comment.id} className={styles.comments__message}>
                         <Comment
                           authorId={comment.authorId}
@@ -146,7 +174,35 @@ export const PostComponent: FC = () => {
               </section>
             </Tabs>
           </div>
-        </div>
+          {auth && (
+            <aside className={styles.comments__reply}>
+              <div className={styles.reply__container}>
+                <div className={styles.reply__message}>
+                  <div className={styles.reply__avatar}>
+                    <div className={styles.reply__img}>
+                      <img src={NoAvatar} alt="avatar" />
+                    </div>
+                  </div>
+                  <div className={styles.reply__control}>
+                    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                    <textarea
+                      className={styles.reply__textarea}
+                      value={commentValue}
+                      onChange={(event) => setCommentValue(event.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className={styles.reply__btn}
+                      onClick={handleClick}
+                    >
+                      Отправить
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          )}
+          </div>
       </div>
     </div>
   );

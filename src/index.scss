@@ -58,3 +58,19 @@ body {
 .codex-editor__redactor {
   padding-bottom: 0 !important;
 }
+
+.react-calendar {
+
+  &__navigation {
+    background-color: var(--color-primary) !important;
+
+    & > button {
+      color: white !important;
+
+      &:hover {
+        background-color: var(--color-hover) !important;
+        opacity: 1;
+      }
+    }
+  }
+}
