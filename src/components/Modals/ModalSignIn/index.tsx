@@ -30,8 +30,6 @@ export const ModalSignIn: FC = observer(() => {
         clearCurrentModal();
       })
       .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log('Error: ', err.error);
         if (err.error.message === 'INVALID_PASSWORD' ||
           err.error.message === 'INVALID_EMAIL' ||
           err.error.message === 'EMAIL_NOT_FOUND') {

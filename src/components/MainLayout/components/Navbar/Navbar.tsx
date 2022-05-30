@@ -1,10 +1,10 @@
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {observer} from 'mobx-react-lite';
 
 import {logo, NoAvatar} from '../../../../assets/images';
 import {Icon} from '../../../index';
-import {useStores} from '../../../../hooks';
+import {useAuth, useStores} from '../../../../hooks';
 import {ModalSignIn} from '../../../Modals';
 import {AuthService} from '../../../../services/authService';
 import {Dropdown} from '../../../Dropdown';
@@ -14,7 +14,7 @@ import './Navbar.scss';
 const Navbar: FC = observer(() => {
   const {modalStore: {setCurrentModal}} = useStores();
 
-  const authService = new AuthService();
+  const {auth} = useAuth();
 
   return (
     <div className="navbar bg-primary">
@@ -132,7 +132,7 @@ const Navbar: FC = observer(() => {
               </Link>
             </ul>
 
-            {authService.isAuthenticated ? (
+            {auth ? (
               <div className="right-navbar__user-img">
                 <img src={NoAvatar} alt="Ваш профиль" />
               </div>
