@@ -15,6 +15,8 @@ import styles from './index.module.scss';
 
 export const ModalSignIn: FC = observer(() => {
   const [signInError, setSignInError] = useState<boolean>(false);
+  const [signUpError, setSignUpError] = useState<boolean>(false);
+  const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
 
   const {modalStore: {clearCurrentModal}} = useStores();
 
@@ -39,11 +41,24 @@ export const ModalSignIn: FC = observer(() => {
   };
 
   const handleSignUp = (userForm: UserSignUpForm) => {
-    signUpService.signUp({...userForm})
-      .then(() => {
-        setAuth(true);
-        clearCurrentModal();
-      });
+    if (userForm.password === userForm.repeatedPassword) {
+      signUpService.signUp({
+        email: userForm.email,
+        login: userForm.login,
+        password: userForm.password
+      })
+        .then(() => {
+          setAuth(true);
+          clearCurrentModal();
+        })
+        .catch((err) => {
+          if (err.error.message === 'EMAIL_EXISTS') {
+            setSignUpError(true);
+          }
+        });
+    } else {
+      setPasswordsMatch(false);
+    }
   };
 
   const signInFormik = useFormik({
@@ -69,13 +84,9 @@ export const ModalSignIn: FC = observer(() => {
       login: Yup.string().required('Это обязательное поле'),
       password: Yup.string().required('Это обязательное поле'),
       repeatedPassword: Yup.string().required('Это обязательное поле'),
-      email: Yup.string().required('Это обязательное поле')
+      email: Yup.string().required('Это обязательное поле').email('Неверный формат email')
     }),
-    onSubmit: (values) => handleSignUp({
-      login: values.login,
-      email: values.email,
-      password: values.password
-    })
+    onSubmit: (values) => handleSignUp({...values})
   });
 
 
@@ -213,6 +224,8 @@ export const ModalSignIn: FC = observer(() => {
                 </label>
                 {signUpFormik.errors.email && signUpFormik.touched.email &&
                   <span className={styles.signIn__alert}>{signUpFormik.errors.email}</span>}
+                {signUpError && <span className={styles.signIn__alert}>Пользователь с таким email уже существует</span>}
+                {!passwordsMatch && <span className={styles.signIn__alert}>Пароли не совпадают</span>}
                 <button
                   type="submit"
                   className={styles.signIn__signInBtn}

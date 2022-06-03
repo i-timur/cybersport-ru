@@ -57,5 +57,6 @@ export interface UserSignInForm {
 export interface UserSignUpForm {
   login: string;
   password: string;
+  repeatedPassword: string;
   email: string;
 }
