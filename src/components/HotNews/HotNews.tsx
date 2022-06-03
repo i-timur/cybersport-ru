@@ -2,7 +2,7 @@ import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
 import {hf, elec, ww, fish, vert} from '../../assets/images';
-import {Post} from '../../types';
+import {Post} from '../../interfaces';
 
 import {HotNewsPreview} from './components/index';
 

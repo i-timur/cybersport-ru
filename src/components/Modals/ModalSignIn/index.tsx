@@ -1,6 +1,5 @@
 import {FC, useState} from 'react';
 import {observer} from 'mobx-react-lite';
-// @ts-ignore
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
@@ -9,8 +8,8 @@ import {NoAvatar} from '../../../assets/images';
 import {ModalContainer} from '../../ModalContainer';
 import {Close} from '../../../assets/icons';
 import {useAuth, useStores} from '../../../hooks';
-import {User, UserSignUpForm} from '../../../types';
-import {AuthService} from '../../../services/authService';
+import {User, UserSignUpForm} from '../../../interfaces';
+import {AuthService, SignUpService} from '../../../services';
 
 import styles from './index.module.scss';
 
@@ -22,6 +21,7 @@ export const ModalSignIn: FC = observer(() => {
   const {setAuth} = useAuth();
 
   const auth = new AuthService();
+  const signUpService = new SignUpService();
 
   const handleSignIn = (userForm: User) => {
     auth.login(userForm)
@@ -39,7 +39,11 @@ export const ModalSignIn: FC = observer(() => {
   };
 
   const handleSignUp = (userForm: UserSignUpForm) => {
-
+    signUpService.signUp({...userForm})
+      .then(() => {
+        setAuth(true);
+        clearCurrentModal();
+      });
   };
 
   const signInFormik = useFormik({
@@ -67,7 +71,11 @@ export const ModalSignIn: FC = observer(() => {
       repeatedPassword: Yup.string().required('Это обязательное поле'),
       email: Yup.string().required('Это обязательное поле')
     }),
-    onSubmit: () => {}
+    onSubmit: (values) => handleSignUp({
+      login: values.login,
+      email: values.email,
+      password: values.password
+    })
   });
 
 

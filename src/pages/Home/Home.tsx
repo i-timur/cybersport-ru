@@ -1,7 +1,7 @@
 import {FC, useEffect, useState} from 'react';
 
 import {HotNews, MainNews, HomeCards} from '../../components';
-import {Post} from '../../types';
+import {Post} from '../../interfaces';
 import {http} from '../../client';
 import {comparePosts, makeArrayOf} from '../../utils';
 

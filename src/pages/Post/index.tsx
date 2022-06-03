@@ -1,14 +1,12 @@
 import {FC, useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {format} from 'date-fns';
-import {ru} from 'date-fns/locale';
-// @ts-ignore
 import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
 
 import {useAuth} from '../../hooks';
 import {NoAvatar} from '../../assets/images';
 import {http} from '../../client';
-import {Message, Post} from '../../types';
+import {Message, Post} from '../../interfaces';
 import {compareCommentsByDateAsc, compareCommentsByLikesDesc, comparePosts, makeArrayOf} from '../../utils';
 import {Editor, NewsItem, Comment} from '../../components';
 

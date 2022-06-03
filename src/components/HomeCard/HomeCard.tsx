@@ -4,7 +4,7 @@ import {formatDistance} from 'date-fns';
 import {ru} from 'date-fns/locale';
 
 import {Badge, Icon} from '../index';
-import {Post} from '../../types';
+import {Post} from '../../interfaces';
 import './HomeCard.scss';
 
 interface Props {

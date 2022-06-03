@@ -1,6 +1,6 @@
 import {FC} from 'react';
 
-import {Category} from '../../types';
+import {Category} from '../../interfaces';
 
 import styles from './index.module.scss';
 

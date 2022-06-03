@@ -6,7 +6,7 @@ import {ru} from 'date-fns/locale';
 import {Icon} from '../../../index';
 import './NewsItem.scss';
 import {getCategoryImage} from '../../../../utils';
-import {Category} from '../../../../types';
+import {Category} from '../../../../interfaces';
 
 interface Props {
   id: string;

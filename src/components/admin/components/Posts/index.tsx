@@ -2,7 +2,7 @@ import {FC, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {http} from '../../../../client';
-import {Post, PostsResp} from '../../../../types';
+import {Post, PostsResp} from '../../../../interfaces';
 import {comparePosts} from '../../../../utils';
 
 import styles from './index.module.scss';

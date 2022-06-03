@@ -1,4 +1,4 @@
-import {FbAuthResponse, User} from '../types';
+import {FbAuthResponse, User} from '../interfaces';
 import {http} from '../client';
 
 export class AuthService {
@@ -36,8 +36,7 @@ export class AuthService {
         `${process.env.REACT_APP_API_URL}/accounts:signInWithPassword?key=${process.env.REACT_APP_API_KEY}`,
         user
       )
-        .then((resp) => {
-          // @ts-ignore
+        .then((resp: any) => {
           this.setToken(resp);
           this.state = 'done';
           resolve();

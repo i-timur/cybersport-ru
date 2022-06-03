@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import './HotNewsPreview.scss';
 import {Badge, Icon} from '../../../index';
 import {Option} from '../../../../utils';
-import {Category} from '../../../../types';
+import {Category} from '../../../../interfaces';
 
 interface Props {
   id: string;

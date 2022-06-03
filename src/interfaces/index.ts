@@ -1,5 +1,6 @@
 import {OutputData} from '@editorjs/editorjs';
 import {Dispatch} from 'react';
+
 import {Option} from '../utils';
 
 export interface User {

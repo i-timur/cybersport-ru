@@ -10,7 +10,7 @@ import Dropdown from 'react-dropdown';
 import {Btn} from '../ui/Btn';
 import {Input} from '../ui/Input';
 import {http} from '../../../../client';
-import {Post} from '../../../../types';
+import {Post} from '../../../../interfaces';
 import {categoryOptions, Option, postOptions} from '../../../../utils';
 
 import './index.scss';

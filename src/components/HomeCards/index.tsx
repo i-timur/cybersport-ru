@@ -1,7 +1,7 @@
 import {FC} from 'react';
 
 import {HomeCard} from '../index';
-import {Post} from '../../types';
+import {Post} from '../../interfaces';
 
 import styles from './index.module.scss';
 

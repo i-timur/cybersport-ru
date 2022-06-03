@@ -1,4 +1,4 @@
-import {Category, Message, Post} from '../types';
+import {Category, Message, Post} from '../interfaces';
 import {Dota2, Csgo, Lol} from '../assets/icons/categories';
 
 export const comparePosts = (post1: Post, post2: Post) => new Date(post2.date).getTime() - new Date(post1.date).getTime();

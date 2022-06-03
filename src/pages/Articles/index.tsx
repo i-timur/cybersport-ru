@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import Calendar from 'react-calendar';
 
 import {http} from '../../client';
-import {Post} from '../../types';
+import {Post} from '../../interfaces';
 import {comparePosts, makeArrayOf, postOptions} from '../../utils';
 import {HomeCard} from '../../components';
 

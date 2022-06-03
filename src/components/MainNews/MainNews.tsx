@@ -2,7 +2,7 @@ import {FC, Fragment} from 'react';
 import {format} from 'date-fns';
 import {ru} from 'date-fns/locale';
 
-import {Post} from '../../types';
+import {Post} from '../../interfaces';
 
 import {NewsItem} from './components/index';
 
@@ -27,8 +27,7 @@ const MainNews: FC<Props> = ({posts}) => {
       sortedPostsByDate[post.date] = [{...post, date: new Date(post.date)}];
     }
   }
-  // eslint-disable-next-line no-console
-  console.log(sortedPostsByDate);
+
   return (
     <div className="main-news">
       <div className="main-news__container">
