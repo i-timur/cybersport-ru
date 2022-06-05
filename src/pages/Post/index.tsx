@@ -8,7 +8,7 @@ import {observer} from 'mobx-react-lite';
 import {useAuth, useStores} from '../../hooks';
 import {NoAvatar} from '../../assets/images';
 import {Post, Comm, User} from '../../interfaces';
-import {compareCommentsByDateAsc} from '../../utils';
+import {compareCommentsByDateAsc, compareCommentsByLikesDesc} from '../../utils';
 import {Editor, NewsItem, Comment} from '../../components';
 import {CommentsService, PostsService, UserService} from '../../services';
 
@@ -234,7 +234,7 @@ export const PostComponent: FC = observer(() => {
               <section className={styles.comments__messages}>
                 <TabPanel>
                   <ul className={styles.comments__messages}>
-                    {comments && comments.map((comment) => (
+                    {comments && comments.sort(compareCommentsByLikesDesc).map((comment) => (
                       <li key={comment.id} className={styles.comments__message}>
                         <Comment
                           authorId={comment.authorId}

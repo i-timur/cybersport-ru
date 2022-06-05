@@ -6,8 +6,18 @@ export const comparePosts = (post1: Post, post2: Post) => new Date(post2.date).g
 export const compareCommentsByDateAsc =
   (comment1: Comm, comment2: Comm) => new Date(comment1.date).getTime() - new Date(comment2.date).getTime();
 
-// export const compareCommentsByLikesDesc =
-//   (comment1: Comm, comment2: Comm) => comment2.likes.length - comment1.likes.length;
+export const compareCommentsByLikesDesc = (comment1: Comm, comment2: Comm) => {
+  if (comment1.likes && comment2.likes) {
+    return comment2.likes.length - comment1.likes.length;
+  }
+  if (comment1.likes) {
+    return -1;
+  }
+  if (comment2.likes) {
+    return 1;
+  }
+  return 0;
+};
 
 export const getCategoryImage = (value: string): string => {
   switch (value) {
