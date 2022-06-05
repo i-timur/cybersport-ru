@@ -12,6 +12,7 @@ import {Input} from '../ui/Input';
 import {http} from '../../../../client';
 import {Post} from '../../../../interfaces';
 import {categoryOptions, Option, postOptions} from '../../../../utils';
+import {PostsService} from '../../../../services/postsService';
 
 import './index.scss';
 import 'react-dropdown/style.css';
@@ -29,6 +30,8 @@ export const CreatePost: FC = () => {
   const [gameImg, setGameImg] = useState<string>(defaultGameImg);
 
   const editorRef = useRef<EditorJS | null>(null);
+
+  const postsService = new PostsService();
 
   const options = categoryOptions.map((category) => {
     return {
@@ -89,18 +92,29 @@ export const CreatePost: FC = () => {
         comments: []
       };
 
-      http.post('posts.json', post)
-        .then(() => {
-          setTitle('');
-          setPreviewLink('');
-          setPostType(defaultPostOption);
-          setGame(defaultGameOption);
-          setGameImg(defaultGameImg);
-          setData(null);
-          editorRef.current!.clear();
-          notify();
-        })
-        .catch(() => {});
+      postsService.create(post).then(() => {
+        setTitle('');
+        setPreviewLink('');
+        setPostType(defaultPostOption);
+        setGame(defaultGameOption);
+        setGameImg(defaultGameImg);
+        setData(null);
+        editorRef.current!.clear();
+        notify();
+      });
+
+      // http.post('posts.json', post)
+      //   .then(() => {
+      //     setTitle('');
+      //     setPreviewLink('');
+      //     setPostType(defaultPostOption);
+      //     setGame(defaultGameOption);
+      //     setGameImg(defaultGameImg);
+      //     setData(null);
+      //     editorRef.current!.clear();
+      //     notify();
+      //   })
+      //   .catch(() => {});
     }
   };
 

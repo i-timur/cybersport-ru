@@ -12,7 +12,7 @@ import {categoryOptions, postOptions} from '../../../../utils';
 import './Navbar.scss';
 
 const Navbar: FC = observer(() => {
-  const {modalStore: {setCurrentModal}} = useStores();
+  const {store: {modalStore: {setCurrentModal}}} = useStores();
 
   const {auth} = useAuth();
 

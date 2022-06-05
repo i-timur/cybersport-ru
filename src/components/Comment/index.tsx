@@ -14,9 +14,13 @@ interface Props {
   date: Date;
   likes: number;
   dislikes: number;
+  liked?: boolean;
+  disliked?: boolean;
+  onLike: () => void;
+  onDislike: () => void;
 }
 
-export const Comment: FC<Props> = ({authorId, authorName, text, date, likes, dislikes}) => {
+export const Comment: FC<Props> = ({authorId, authorName, text, date, likes, dislikes, liked = false, disliked = false, onLike, onDislike}) => {
   return (
     <div className={styles.comment}>
       <div className={styles.comment__left}>
@@ -35,7 +39,7 @@ export const Comment: FC<Props> = ({authorId, authorName, text, date, likes, dis
             </div>
           </div>
           <div className={styles.comment__date}>
-            <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'd.L.y H:m')}</time>
+            <time dateTime={new Date(date).toISOString()}>{format(new Date(date), 'd.L.y HH:mm')}</time>
           </div>
         </header>
         <section className={styles.comment__body}>
@@ -43,14 +47,22 @@ export const Comment: FC<Props> = ({authorId, authorName, text, date, likes, dis
         </section>
         <footer className={styles.comment__footer}>
           <div className={styles.comment__likes}>
-            <button type="button" className={`${styles.comment__like} ${styles.comment__like_green}`}>
-              <Icon name="like" color="#99BA70" hoverColor="#E4EDDA" />
-              <span>{likes ? likes : ''}</span>
+            <button
+              type="button"
+              className={`${styles.comment__like} ${styles.comment__like_green} ${liked ? styles.comment__like_green_active : ''}`}
+              onClick={onLike}
+            >
+              <Icon name="like" color="#99BA70" hoverColor="#FFFFFF" />
             </button>
-            <button type="button" className={`${styles.comment__like} ${styles.comment__like_red}`}>
-              <Icon name="dislike" color="#D61D29" hoverColor="#F8D5D5" />
-              <span>{dislikes ? dislikes : ''}</span>
+            <span className={styles.comment__likeAmount}>{likes ? likes : ''}</span>
+            <button
+              type="button"
+              className={`${styles.comment__like} ${styles.comment__like_red} ${disliked ? styles.comment__like_red_active : ''}`}
+              onClick={onDislike}
+            >
+              <Icon name="dislike" color="#D61D29" hoverColor="#FFFFFF" />
             </button>
+            <span className={styles.comment__likeAmount}>{dislikes ? dislikes : ''}</span>
           </div>
           <div className={styles.comment__controls}>
             <button type="button" className={styles.comment__control}>

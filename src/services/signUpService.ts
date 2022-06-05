@@ -18,6 +18,7 @@ export class SignUpService {
       )
         .then((resp: any) => {
           this.auth.setToken(resp);
+          this.auth.setUserId(resp);
 
           const user: UserCreateDto = {
             ...userCreateDto,

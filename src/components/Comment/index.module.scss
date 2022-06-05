@@ -93,26 +93,67 @@
   }
 
   &__likes {
-
+    display: flex;
+    align-items: center;
+    column-gap: 3px;
   }
 
   &__like {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     display: inline-flex;
+    justify-content: center;
     align-items: center;
     background: transparent;
     cursor: pointer;
+
+    &:hover {
+      & > svg {
+        fill: white !important;
+      }
+    }
 
     &:not(:first-child) {
       margin: 0 0 0 10px;
     }
   }
 
+  &__likeAmount {
+    line-height: 16px;
+    color: var(--color-secondary);
+  }
+
   &__like_green {
     color: var(--color-green);
+
+    &:hover {
+      background: var(--color-green);
+    }
+
+    &_active {
+      background: var(--color-green);
+
+      & > svg {
+        fill:white !important;
+      }
+    }
   }
 
   &__like_red {
     color: var(--color-red);
+
+    &:hover {
+      background: var(--color-red);
+    }
+
+    &_active {
+      background: var(--color-red);
+
+      & > svg {
+        fill:white !important;
+      }
+    }
   }
 
   &__controls {

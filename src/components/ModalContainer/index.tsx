@@ -7,7 +7,7 @@ import {Portal} from '../Portal';
 import styles from './index.module.scss';
 
 export const ModalContainer: FC = observer(({children}) => {
-  const {modalStore: {clearCurrentModal}} = useStores();
+  const {store: {modalStore: {clearCurrentModal}}} = useStores();
 
   const ref = useRef();
 

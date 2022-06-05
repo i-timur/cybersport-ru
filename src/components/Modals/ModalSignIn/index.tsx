@@ -8,8 +8,9 @@ import {NoAvatar} from '../../../assets/images';
 import {ModalContainer} from '../../ModalContainer';
 import {Close} from '../../../assets/icons';
 import {useAuth, useStores} from '../../../hooks';
-import {User, UserSignUpForm} from '../../../interfaces';
+import {FbUserRequest, UserSignUpForm} from '../../../interfaces';
 import {AuthService, SignUpService} from '../../../services';
+import {Role} from '../../../enums';
 
 import styles from './index.module.scss';
 
@@ -18,17 +19,18 @@ export const ModalSignIn: FC = observer(() => {
   const [signUpError, setSignUpError] = useState<boolean>(false);
   const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
 
-  const {modalStore: {clearCurrentModal}} = useStores();
+  const {store: {modalStore: {clearCurrentModal}}, setRefreshStore} = useStores();
 
   const {setAuth} = useAuth();
 
   const auth = new AuthService();
   const signUpService = new SignUpService();
 
-  const handleSignIn = (userForm: User) => {
+  const handleSignIn = (userForm: FbUserRequest) => {
     auth.login(userForm)
       .then(() => {
         setAuth(true);
+        setRefreshStore(true);
         clearCurrentModal();
       })
       .catch((err) => {
@@ -45,10 +47,12 @@ export const ModalSignIn: FC = observer(() => {
       signUpService.signUp({
         email: userForm.email,
         login: userForm.login,
-        password: userForm.password
+        password: userForm.password,
+        role: Role.User
       })
         .then(() => {
           setAuth(true);
+          setRefreshStore(true);
           clearCurrentModal();
         })
         .catch((err) => {

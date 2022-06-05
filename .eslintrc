@@ -46,6 +46,7 @@
     "@shopify/jsx-no-hardcoded-content": 0,
     "comma-dangle": 0,
     "react/jsx-no-constructed-context-values": 0,
-    "react-hooks/exhaustive-deps": 0
+    "react-hooks/exhaustive-deps": 0,
+    "jsx-a11y/control-has-associated-label": 0
   }
 }

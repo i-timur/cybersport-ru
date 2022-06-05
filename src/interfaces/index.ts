@@ -2,8 +2,9 @@ import {OutputData} from '@editorjs/editorjs';
 import {Dispatch} from 'react';
 
 import {Option} from '../utils';
+import {Role} from '../enums';
 
-export interface User {
+export interface FbUserRequest {
   email: string;
   password: string;
   returnSecureToken?: boolean;
@@ -12,6 +13,7 @@ export interface User {
 export interface FbAuthResponse {
   idToken: string;
   expiresIn: string;
+  localId: string;
 }
 
 export interface Post {
@@ -22,7 +24,7 @@ export interface Post {
   data: OutputData;
   date: Date;
   game: Category;
-  comments: Message[];
+  comments: Comm[];
 }
 
 export interface AuthContextValue {
@@ -59,4 +61,21 @@ export interface UserSignUpForm {
   password: string;
   repeatedPassword: string;
   email: string;
+}
+
+export interface User {
+  id: string;
+  email: string;
+  login: string;
+  role: Role;
+}
+
+export interface Comm {
+  id?: string;
+  postId: string;
+  authorId: string;
+  text: string;
+  likes?: string[];
+  dislikes?: string[];
+  date: Date;
 }

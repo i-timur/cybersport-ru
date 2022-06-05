@@ -3,4 +3,5 @@ export interface UserCreateDto {
   email: string;
   password: string;
   login: string;
+  role: 'ADMIN' | 'USER';
 }

@@ -1,4 +1,4 @@
-import {FbAuthResponse, User} from '../interfaces';
+import {FbAuthResponse, FbUserRequest} from '../interfaces';
 import {http} from '../client';
 
 export class AuthService {
@@ -28,7 +28,11 @@ export class AuthService {
     }
   }
 
-  login(user: User): Promise<void> {
+  setUserId(response: FbAuthResponse): void {
+    localStorage.setItem('fb-id', response.localId);
+  }
+
+  login(user: FbUserRequest): Promise<void> {
     this.state = 'pending';
     user.returnSecureToken = true;
     return new Promise((resolve, reject) => {
@@ -38,6 +42,7 @@ export class AuthService {
       )
         .then((resp: any) => {
           this.setToken(resp);
+          this.setUserId(resp);
           this.state = 'done';
           resolve();
         })

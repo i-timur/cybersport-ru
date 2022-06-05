@@ -2,7 +2,7 @@ import {FC, Fragment} from 'react';
 import {format} from 'date-fns';
 import {ru} from 'date-fns/locale';
 
-import {Post} from '../../interfaces';
+import {Comm, Post} from '../../interfaces';
 
 import {NewsItem} from './components/index';
 

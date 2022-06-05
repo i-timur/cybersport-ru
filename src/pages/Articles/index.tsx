@@ -3,12 +3,13 @@ import {useParams} from 'react-router-dom';
 //  @ts-ignore
 import Calendar from 'react-calendar';
 
-import {http} from '../../client';
 import {Post} from '../../interfaces';
-import {comparePosts, makeArrayOf, postOptions} from '../../utils';
+import {postOptions} from '../../utils';
 import {HomeCard} from '../../components';
+import {PostsService} from '../../services';
 
 import styles from './index.module.scss';
+
 import 'react-calendar/dist/Calendar.css';
 
 export const Articles: FC = () => {
@@ -19,6 +20,8 @@ export const Articles: FC = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
   const [visiblePosts, setVisiblePosts] = useState<Post[] | null>(null);
   const [calendarDate, setCalendarDate] = useState<Date[] | null>(null);
+
+  const postsService = new PostsService();
 
   const handleCalendarChange = (dates: Date[]) => {
     setCalendarDate(dates);
@@ -34,21 +37,12 @@ export const Articles: FC = () => {
   };
 
   useEffect(() => {
-    http.get('posts.json')
-      .then((res: any) => {
-        const posts: Post[] = makeArrayOf(res)
-          .map((post) => {
-            return {
-              ...post,
-              comments: post.comments ? makeArrayOf(post.comments) : []
-            };
-          })
-          .sort(comparePosts)
-          .filter((post: Post) => post.postType.value === postType);
-
+    if (postType) {
+      postsService.getPostsByCategory(postType).then((posts) => {
         setPosts(posts);
         setVisiblePosts(posts);
       });
+    }
   }, [postType]);
 
   return (

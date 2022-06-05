@@ -51,6 +51,13 @@ body {
   background-color: #202020;
 }
 
+.loader {
+  width: 100%;
+  padding: 120px 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
 .ce-block__content, .ce-toolbar__content {
   margin: 0 !important;
 }

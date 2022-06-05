@@ -4,7 +4,7 @@ import {observer} from 'mobx-react-lite';
 import {useStores} from '../../hooks';
 
 export const ModalConstructor: FC = observer(() => {
-  const {modalStore: {currentModal}} = useStores();
+  const {store: {modalStore: {currentModal}}} = useStores();
 
   if (currentModal) {
     return cloneElement(currentModal);

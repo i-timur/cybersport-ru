@@ -1,13 +1,13 @@
-import {Category, Message, Post} from '../interfaces';
+import {Category, Comm, Message, Post} from '../interfaces';
 import {Dota2, Csgo, Lol} from '../assets/icons/categories';
 
 export const comparePosts = (post1: Post, post2: Post) => new Date(post2.date).getTime() - new Date(post1.date).getTime();
 
 export const compareCommentsByDateAsc =
-  (comment1: Message, comment2: Message) => new Date(comment1.date).getTime() - new Date(comment2.date).getTime();
+  (comment1: Comm, comment2: Comm) => new Date(comment1.date).getTime() - new Date(comment2.date).getTime();
 
-export const compareCommentsByLikesDesc =
-  (comment1: Message, comment2: Message) => comment2.likes - comment1.likes;
+// export const compareCommentsByLikesDesc =
+//   (comment1: Comm, comment2: Comm) => comment2.likes.length - comment1.likes.length;
 
 export const getCategoryImage = (value: string): string => {
   switch (value) {

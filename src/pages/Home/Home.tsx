@@ -3,8 +3,7 @@ import {Circles} from 'react-loader-spinner';
 
 import {HotNews, MainNews, HomeCards} from '../../components';
 import {Post} from '../../interfaces';
-import {http} from '../../client';
-import {comparePosts, makeArrayOf} from '../../utils';
+import {PostsService} from '../../services/postsService';
 
 import './Home.scss';
 
@@ -12,17 +11,11 @@ const Home: FC = () => {
   const [posts, setPosts] = useState<Post[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const postsService = new PostsService();
+
   useEffect(() => {
-    http.get('posts.json')
-      .then((res: any) => {
-        const posts: Post[] = makeArrayOf(res)
-          .map((post) => {
-            return {
-              ...post,
-              comments: post.comments ? makeArrayOf(post.comments) : []
-            };
-          })
-          .sort(comparePosts);
+    postsService.getAllPosts()
+      .then((posts) => {
         setPosts(posts);
         setLoading(false);
       });
@@ -32,15 +25,13 @@ const Home: FC = () => {
     <main className="home">
       <div className="home__container">
         {loading ? (
-          <div className="home__loader">
-            <div className="home__loader-container">
+          <div className="loader">
               <Circles
                 height="100"
                 width="100"
                 color="#EE773B"
                 ariaLabel="loading"
               />
-            </div>
           </div>
           ) : (
           <>
